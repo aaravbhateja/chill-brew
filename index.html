@@ -24,6 +24,26 @@
             font-weight: bold;
             color: #ecf0f1;
         }
+        .location-permission {
+            text-align: center;
+            margin: 40px 20px;
+        }
+        .location-permission p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        .location-permission button {
+            background-color: #1abc9c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .location-permission button:hover {
+            background-color: #16a085;
+        }
         .menu {
             display: flex;
             flex-wrap: wrap;
@@ -241,7 +261,11 @@
     <header>
         <h1>Chillbrew Milkshakes</h1>
     </header>
-    <div class="location-message" id="location-message">Please allow location access to check delivery availability...</div>
+    <div class="location-permission" id="location-permission">
+        <p>This website requires location access to check if you are within our delivery range (50 km radius of Vaishali Nagar, Jaipur).</p>
+        <button onclick="requestLocationPermission()">Allow Location Access</button>
+    </div>
+    <div class="location-message" id="location-message"></div>
     <div class="menu" id="menu">
         <!-- Menu items will be dynamically generated here -->
     </div>
@@ -332,8 +356,8 @@
             return deg * (Math.PI / 180);
         }
 
-        // Function to check user's location
-        function checkLocation() {
+        // Function to request location permission
+        function requestLocationPermission() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
@@ -347,22 +371,24 @@
                             withinRadius = true;
                             document.getElementById('location-message').innerText = 'You are within our delivery range!';
                             document.getElementById('location-message').classList.add('success');
+                            document.getElementById('location-permission').style.display = 'none';
                             enableMenu();
                         } else {
                             document.getElementById('location-message').innerText = 'You are out of our delivery range. Orders are only available within a 50 km radius of Vaishali Nagar, Jaipur.';
+                            document.getElementById('location-permission').style.display = 'none';
                             disableMenu();
                         }
                     },
                     (error) => {
                         console.error('Error getting location:', error);
                         document.getElementById('location-message').innerText = 'Location access is required to check delivery availability. Please enable location services.';
-                        disableMenu();
+                        document.getElementById('location-permission').style.display = 'block';
                     },
-                    { enableHighAccuracy: true } // Force high accuracy to ensure fresh permission request
+                    { enableHighAccuracy: true } // Force high accuracy for better results
                 );
             } else {
                 document.getElementById('location-message').innerText = 'Geolocation is not supported by your browser.';
-                disableMenu();
+                document.getElementById('location-permission').style.display = 'none';
             }
         }
 
@@ -460,9 +486,6 @@
             document.getElementById('payment-page').style.display = 'none';
             document.getElementById('cart').style.display = 'none';
         }
-
-        // Check location on page load
-        checkLocation();
     </script>
 </body>
 </html>
