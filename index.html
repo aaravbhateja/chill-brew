@@ -72,9 +72,27 @@
         .menu-item button:hover {
             background-color: #16a085;
         }
-        .cart {
+        .cart-icon {
             position: fixed;
             top: 20px;
+            right: 20px;
+            background-color: #1abc9c;
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .cart-icon span {
+            font-size: 1.2em;
+        }
+        .cart {
+            position: fixed;
+            top: 80px;
             right: 20px;
             background-color: #fff;
             border: 1px solid #ddd;
@@ -82,6 +100,7 @@
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 300px;
+            display: none;
         }
         .cart h2 {
             margin: 0 0 20px;
@@ -113,6 +132,52 @@
             font-size: 1em;
         }
         .cart button:hover {
+            background-color: #16a085;
+        }
+        .order-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            z-index: 1000;
+        }
+        .order-form h2 {
+            margin: 0 0 20px;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+        .order-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1em;
+            color: #666;
+        }
+        .order-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .order-form button {
+            background-color: #1abc9c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+        }
+        .order-form button:hover {
             background-color: #16a085;
         }
         footer {
@@ -149,10 +214,27 @@
     <div class="menu" id="menu">
         <!-- Menu items will be dynamically generated here -->
     </div>
+    <div class="cart-icon" onclick="toggleCart()">
+        <span>🛒</span>
+    </div>
     <div class="cart" id="cart">
         <h2>Cart</h2>
         <ul id="cart-items"></ul>
-        <button onclick="checkout()">Checkout</button>
+        <button onclick="showOrderForm()">Checkout</button>
+    </div>
+    <div class="order-form" id="order-form">
+        <h2>Order Details</h2>
+        <form onsubmit="confirmOrder(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+            <button type="submit">Confirm Order</button>
+        </form>
     </div>
     <footer>
         <p>Contact us: 701083740 | Follow us @chillbrew | Visit us at <a href="http://www.chillbrew.com">www.chillbrew.com</a></p>
@@ -276,15 +358,45 @@
             cartItems.appendChild(totalLi);
         }
 
-        // Checkout function
-        function checkout() {
+        // Toggle cart visibility
+        function toggleCart() {
+            const cart = document.getElementById('cart');
+            cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Show order form
+        function showOrderForm() {
             if (!withinRadius) {
                 alert('You are out of our delivery range. Orders are only available within a 50 km radius of Vaishali Nagar, Jaipur.');
                 return;
             }
-            alert('Thank you for your order! Total: ₹' + cart.reduce((sum, item) => sum + item.price, 0));
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to proceed.');
+                return;
+            }
+            document.getElementById('order-form').style.display = 'block';
+        }
+
+        // Confirm order
+        function confirmOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+
+            // Validate inputs
+            if (!name || !phone || !email || !address) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            // Display order confirmation
+            alert(`Thank you for your order, ${name}! Your order will be delivered to ${address}. Total: ₹${cart.reduce((sum, item) => sum + item.price, 0)}`);
             cart = [];
             updateCart();
+            document.getElementById('order-form').style.display = 'none';
+            document.getElementById('cart').style.display = 'none';
         }
 
         // Check location on page load
