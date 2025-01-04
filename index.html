@@ -145,9 +145,9 @@
     <header>
         <h1>Chillbrew Milkshakes</h1>
     </header>
-    <div class="location-message" id="location-message">Detecting your location...</div>
+    <div class="location-message" id="location-message">Please allow location access to check delivery availability...</div>
     <div class="menu" id="menu">
-        <!-- Menu items will be dynamically enabled/disabled based on location -->
+        <!-- Menu items will be dynamically generated here -->
     </div>
     <div class="cart" id="cart">
         <h2>Cart</h2>
@@ -220,7 +220,7 @@
                     },
                     (error) => {
                         console.error('Error getting location:', error);
-                        document.getElementById('location-message').innerText = 'Unable to retrieve your location. Please enable location services to check delivery availability.';
+                        document.getElementById('location-message').innerText = 'Location access is required to check delivery availability. Please enable location services.';
                         disableMenu();
                     }
                 );
@@ -267,12 +267,12 @@
             let total = 0;
             cart.forEach(item => {
                 const li = document.createElement('li');
-                li.innerHTML = <span>${item.name}</span><span>₹${item.price}</span>;
+                li.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>`;
                 cartItems.appendChild(li);
                 total += item.price;
             });
             const totalLi = document.createElement('li');
-            totalLi.innerHTML = <span><strong>Total</strong></span><span><strong>₹${total}</strong></span>;
+            totalLi.innerHTML = `<span><strong>Total</strong></span><span><strong>₹${total}</strong></span>`;
             cartItems.appendChild(totalLi);
         }
 
