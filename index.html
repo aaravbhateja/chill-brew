@@ -357,7 +357,8 @@
                         console.error('Error getting location:', error);
                         document.getElementById('location-message').innerText = 'Location access is required to check delivery availability. Please enable location services.';
                         disableMenu();
-                    }
+                    },
+                    { enableHighAccuracy: true } // Force high accuracy for better results
                 );
             } else {
                 document.getElementById('location-message').innerText = 'Geolocation is not supported by your browser.';
