@@ -395,3 +395,38 @@ footer {
         max-width: none;
     }
 }
+/* Style for the Remove button */
+.remove-btn {
+    background-color: #ff4d4d; /* Red color for the Remove button */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+}
+
+/* Style for the Proceed to Checkout button */
+.cart button {
+    background-color: #4CAF50; /* Green color for the Checkout button */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Add some space above the button */
+    width: 100%; /* Make the button full width */
+    max-width: 300px; /* Limit the maximum width */
+}
+
+.cart button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
