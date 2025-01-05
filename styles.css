@@ -398,37 +398,31 @@ footer {
 /* Style for the Remove button */
 .remove-btn {
     background-color: transparent; /* Remove background color */
-    color: #e74c3c; /* Red color for the text */
-    border: 1px solid #e74c3c; /* Add a border to make it visible */
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    cursor: pointer; /* Ensure it looks clickable */
+    display: inline-block; /* Ensure it behaves like a button */
 }
 
-.remove-btn:hover {
-    background-color: #e74c3c; /* Red background on hover */
-    color: white; /* White text on hover */
+.remove-btn img {
+    display: block; /* Ensure the image takes up the full space of the button */
+    width: 100%; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
 }
 
 /* Style for the Proceed to Checkout button */
 .cart button {
-    background-color: transparent; /* Remove green background */
-    color: #2c3e50; /* Dark blue color for the text */
-    border: 2px solid #2c3e50; /* Add a border to make it visible */
-    padding: 12px 24px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 300px;
+    background-color: transparent; /* Remove background color */
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    cursor: pointer; /* Ensure it looks clickable */
+    display: inline-block; /* Ensure it behaves like a button */
 }
 
-.cart button:hover {
-    background-color: #2c3e50; /* Dark blue background on hover */
-    color: white; /* White text on hover */
+.cart button img {
+    display: block; /* Ensure the image takes up the full space of the button */
+    width: 100%; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
 }
