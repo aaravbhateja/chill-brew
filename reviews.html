@@ -6,6 +6,24 @@
     <title>Reviews - Chillbrew Milkshakes</title>
     <style>
         /* Add your CSS styles here (same as provided in your original index.html) */
+        /* Logo Animation */
+        @keyframes logoAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        header img {
+            height: 60px;
+            animation: logoAnimation 2s infinite; /* Apply animation */
+            margin-right: 20px; /* Add spacing between logo and navigation */
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
