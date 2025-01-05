@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chillbrew Milkshakes</title>
     <style>
-        /* Add your CSS styles here (same as provided in your original index.html) */
+        /* General Styles */
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
@@ -14,6 +14,110 @@
             padding: 0;
         }
 
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Animation */
+        @keyframes logoAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        header img {
+            height: 60px;
+            animation: logoAnimation 2s infinite; /* Apply animation */
+            margin-right: 20px; /* Add spacing between logo and navigation */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #1abc9c;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+        }
+
+        .search-bar button {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 1em;
+            transition: transform 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            transform: scale(1.05);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon span {
+            font-size: 1.2em;
+            color: #ecf0f1;
+        }
+
+        .cart-icon .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e74c3c;
+            color: #fff;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 0.8em;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Location Permission Styles */
         .location-permission {
             text-align: center;
             margin: 40px 20px;
