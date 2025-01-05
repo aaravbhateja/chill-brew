@@ -22,6 +22,15 @@
             padding: 4px 8px;
             font-size: 12px; /* Make the badge number smaller */
         }
+        .remove-btn img, .checkout-btn img {
+            width: 24px; /* Adjust the size of the button images */
+            height: 24px;
+            cursor: pointer;
+        }
+        .checkout-btn img {
+            width: 150px; /* Adjust the size of the checkout button */
+            height: auto;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -55,7 +64,9 @@
         <ul id="cart-items">
             <!-- Cart items will be dynamically added here -->
         </ul>
-        <button onclick="window.location.href='order.html'">Proceed to Checkout</button>
+        <button class="checkout-btn" onclick="window.location.href='order.html'">
+            <img src="ptc.png" alt="Proceed to Checkout">
+        </button>
     </div>
 
     <!-- Footer -->
@@ -86,7 +97,9 @@
                 li.innerHTML = `
                     <span>${item.name}</span>
                     <span>₹${item.price}</span>
-                    <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                    <button class="remove-btn" onclick="removeItem(${index})">
+                        <img src="remove.png" alt="Remove">
+                    </button>
                 `;
                 cartItems.appendChild(li);
                 total += item.price;
