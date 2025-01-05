@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Chillbrew Milkshakes</title>
+    <style>
+        /* Add your CSS styles here (same as provided in your original index.html) */
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="logo.PNG" alt="Chillbrew Shakes Logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="track.html">Track Order</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+            <span>🛒</span>
+            <div class="badge" id="cart-badge">0</div>
+        </div>
+    </header>
+
+    <!-- About Us Content -->
+    <div class="about-content">
+        <h1>About Us</h1>
+        <p>Welcome to Chillbrew Milkshakes! We are passionate about delivering the best milkshakes in town. Our mission is to bring joy to your taste buds with every sip.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms & Conditions</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://instagram.com/chillbrew">📸</a>
+            <a href="https://facebook.com/chillbrew">📘</a>
+            <a href="https://twitter.com/chillbrew">🐦</a>
+        </div>
+        <p>Contact us: 701083740 | <a href="mailto:info@chillbrew.com">info@chillbrew.com</a></p>
+    </footer>
+
+    <script>
+        // Update cart badge on page load
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.getElementById('cart-badge').innerText = cart.length;
+    </script>
+</body>
+</html>
