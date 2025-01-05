@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Add your CSS styles here (same as provided in your original index.html) */
+        .cart-icon {
+            position: relative;
+            font-size: 24px; /* Increase the size of the cart icon */
+            cursor: pointer;
+        }
+        .badge {
+            position: absolute;
+            top: -10px; /* Adjust the vertical position of the badge */
+            right: -10px; /* Adjust the horizontal position of the badge */
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 4px 8px;
+            font-size: 12px; /* Make the badge number smaller */
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -20,7 +35,6 @@
                 <li><a href="products.html">Products</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
-                
                 <li><a href="track.html">Track Order</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -67,9 +81,13 @@
             const cartItems = document.getElementById('cart-items');
             cartItems.innerHTML = '';
             let total = 0;
-            cart.forEach(item => {
+            cart.forEach((item, index) => {
                 const li = document.createElement('li');
-                li.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>`;
+                li.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>₹${item.price}</span>
+                    <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                `;
                 cartItems.appendChild(li);
                 total += item.price;
             });
@@ -79,6 +97,13 @@
 
             // Update cart badge
             document.getElementById('cart-badge').innerText = cart.length;
+        }
+
+        // Function to remove an item from the cart
+        function removeItem(index) {
+            cart.splice(index, 1); // Remove the item at the specified index
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+            displayCartItems(); // Refresh the cart display
         }
 
         // Display cart items on page load
