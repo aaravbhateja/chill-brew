@@ -260,3 +260,128 @@ footer {
         font-size: 1em;
     }
 }
+/* Banner / Hero Section Styles */
+.banner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.banner-content {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeInUp 1s ease;
+}
+
+.banner-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: slideInLeft 1s ease;
+}
+
+.banner-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    animation: slideInRight 1s ease;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    animation: fadeIn 1.5s ease;
+}
+
+.cta-primary, .cta-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cta-primary {
+    background: #fff;
+    color: #1abc9c;
+}
+
+.cta-primary:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.cta-secondary {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.banner-image {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInRight 1s ease;
+}
+
+.banner-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
