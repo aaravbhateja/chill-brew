@@ -397,7 +397,7 @@ footer {
 }
 /* Style for the Remove button */
 .remove-btn {
-    background-color: #ff4d4d; /* Red color for the Remove button */
+   
     color: white;
     border: none;
     padding: 8px 16px;
@@ -413,7 +413,7 @@ footer {
 
 /* Style for the Proceed to Checkout button */
 .cart button {
-    background-color: #4CAF50; /* Green color for the Checkout button */
+   
     color: white;
     border: none;
     padding: 12px 24px;
