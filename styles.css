@@ -407,7 +407,7 @@ footer {
 
 .remove-btn img {
     display: block; /* Ensure the image takes up the full space of the button */
-    width: 30px; /* Adjust the width as needed */
+    width: 30px; /* Default width */
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -423,6 +423,27 @@ footer {
 
 .cart button img {
     display: block; /* Ensure the image takes up the full space of the button */
-    width: 100px; /* Adjust the width as needed */
+    width: 100px; /* Default width */
     height: auto; /* Maintain aspect ratio */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .remove-btn img {
+        width: 25px; /* Adjust width for tablets */
+    }
+
+    .cart button img {
+        width: 80px; /* Adjust width for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .remove-btn img {
+        width: 20px; /* Adjust width for mobile phones */
+    }
+
+    .cart button img {
+        width: 60px; /* Adjust width for mobile phones */
+    }
 }
