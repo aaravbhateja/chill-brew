@@ -106,9 +106,9 @@ nav ul li a:hover {
     background-color: #e74c3c;
     color: #fff;
     border-radius: 50%;
-    padding: 5px;
-    font-size: 0.8em;
-    min-width: 20px;
+    padding: 4px;
+    font-size: 0.7em;
+    min-width: 18px;
     text-align: center;
 }
 
