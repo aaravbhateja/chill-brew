@@ -6,6 +6,53 @@
     <title>Chillbrew Milkshakes</title>
     <style>
         /* Add your CSS styles here (same as provided in your original index.html) */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .location-permission {
+            text-align: center;
+            margin: 40px 20px;
+        }
+
+        .location-permission p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .location-permission button {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.3s ease;
+        }
+
+        .location-permission button:hover {
+            transform: scale(1.05);
+        }
+
+        .location-message {
+            text-align: center;
+            margin: 20px;
+            font-size: 1.2em;
+            color: #e74c3c;
+        }
+
+        .location-message.success {
+            color: #2ecc71;
+        }
+
+        #website-content {
+            display: none; /* Hidden by default */
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +65,7 @@
     <div class="location-message" id="location-message"></div>
 
     <!-- Website Content (Hidden by Default) -->
-    <div id="website-content" style="display: none;">
+    <div id="website-content">
         <!-- Header -->
         <header>
             <img src="logo.PNG" alt="Chillbrew Shakes Logo">
@@ -81,6 +128,60 @@
     </div>
 
     <script>
+        // Coordinates of Vaishali Nagar, Jaipur
+        const vaishaliNagarCoords = { latitude: 26.9124, longitude: 75.7873 };
+        const deliveryRadius = 50; // 50 km radius
+
+        // Function to calculate distance using Haversine formula
+        function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the earth in km
+            const dLat = deg2rad(lat2 - lat1);
+            const dLon = deg2rad(lon2 - lon1);
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const d = R * c; // Distance in km
+            return d;
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+        }
+
+        // Function to request location permission
+        function requestLocationPermission() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const userLat = position.coords.latitude;
+                        const userLon = position.coords.longitude;
+                        const distance = getDistanceFromLatLonInKm(
+                            vaishaliNagarCoords.latitude, vaishaliNagarCoords.longitude,
+                            userLat, userLon
+                        );
+                        if (distance <= deliveryRadius) {
+                            document.getElementById('location-permission').style.display = 'none';
+                            document.getElementById('location-message').innerText = 'You are within our delivery range!';
+                            document.getElementById('location-message').classList.add('success');
+                            document.getElementById('website-content').style.display = 'block';
+                        } else {
+                            document.getElementById('location-permission').style.display = 'none';
+                            document.getElementById('location-message').innerText = 'You are out of our delivery range. Orders are only available within a 50 km radius of Vaishali Nagar, Jaipur.';
+                        }
+                    },
+                    (error) => {
+                        console.error('Error getting location:', error);
+                        document.getElementById('location-message').innerText = 'Location access is required to check delivery availability. Please enable location services.';
+                    },
+                    { enableHighAccuracy: true } // Force high accuracy for better results
+                );
+            } else {
+                document.getElementById('location-message').innerText = 'Geolocation is not supported by your browser.';
+            }
+        }
+
         // Cart functionality
         function addToCart(name, price) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
