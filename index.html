@@ -363,37 +363,6 @@
             color: #666;
         }
 
-        .order-tracker {
-            margin: 40px 20px;
-            text-align: center;
-        }
-
-        .order-tracker h2 {
-            font-size: 2em;
-            color: #2c3e50;
-        }
-
-        .tracker-steps {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-        }
-
-        .tracker-step {
-            text-align: center;
-        }
-
-        .tracker-step span {
-            display: block;
-            font-size: 1.2em;
-            color: #666;
-        }
-
-        .tracker-step.active span {
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
         .login-modal {
             display: none;
             position: fixed;
@@ -438,43 +407,6 @@
 
         .login-modal button:hover {
             transform: scale(1.05);
-        }
-
-        .order-history {
-            margin: 40px 20px;
-            text-align: center;
-        }
-
-        .order-history h2 {
-            font-size: 2em;
-            color: #2c3e50;
-        }
-
-        .order-history ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .order-history ul li {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin: 15px;
-            padding: 20px;
-            text-align: left;
-        }
-
-        .order-history ul li h3 {
-            margin: 0 0 10px;
-            font-size: 1.4em;
-            color: #2c3e50;
-        }
-
-        .order-history ul li p {
-            margin: 0;
-            font-size: 1.1em;
-            color: #666;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -562,43 +494,11 @@
             <p>Great service and delicious flavors. Highly recommend!</p>
         </div>
     </div>
-    <div class="order-tracker">
-        <h2>Order Tracker</h2>
-        <div class="tracker-steps">
-            <div class="tracker-step active">
-                <span>Order Placed</span>
-            </div>
-            <div class="tracker-step">
-                <span>Preparing</span>
-            </div>
-            <div class="tracker-step">
-                <span>Out for Delivery</span>
-            </div>
-            <div class="tracker-step">
-                <span>Delivered</span>
-            </div>
-        </div>
-    </div>
     <div class="login-modal" id="login-modal">
         <h2>Login</h2>
         <input type="text" placeholder="Username" required>
         <input type="password" placeholder="Password" required>
         <button onclick="login()">Login</button>
-    </div>
-    <div class="order-history">
-        <h2>Order History</h2>
-        <ul>
-            <li>
-                <h3>Order #12345</h3>
-                <p>Classic Vanilla Milkshake, Kitkat Milkshake</p>
-                <p>Total: ₹328</p>
-            </li>
-            <li>
-                <h3>Order #12346</h3>
-                <p>Chocolate Milkshake, Oreo Milkshake</p>
-                <p>Total: ₹328</p>
-            </li>
-        </ul>
     </div>
     <footer>
         <p>Contact us: 701083740 | Follow us @chillbrew | Visit us at <a href="http://www.chillbrew.com">www.chillbrew.com</a></p>
