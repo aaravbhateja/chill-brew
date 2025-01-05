@@ -5,538 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chillbrew Milkshakes</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header img {
-            height: 60px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        nav ul li a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-        }
-
-        .search-bar input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1em;
-            width: 100%;
-        }
-
-        .search-bar button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-
-        .search-bar button:hover {
-            transform: scale(1.05);
-        }
-
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .cart-icon span {
-            font-size: 1.2em;
-            color: #ecf0f1;
-        }
-
-        .cart-icon .badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: #e74c3c;
-            color: #fff;
-            border-radius: 50%;
-            padding: 5px;
-            font-size: 0.8em;
-            min-width: 20px;
-            text-align: center;
-        }
-
-        .banner {
-            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-            padding: 100px 20px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .banner h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        .banner p {
-            font-size: 1.2em;
-            margin: 10px 0 20px;
-        }
-
-        .banner button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-            margin: 5px;
-        }
-
-        .banner button:hover {
-            transform: scale(1.05);
-        }
-
-        .featured-products, .special-offers {
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .featured-products h2, .special-offers h2 {
-            font-size: 2em;
-            color: #2c3e50;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .product-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-
-        .product-card h3 {
-            margin: 15px 0 10px;
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .product-card p {
-            margin: 0;
-            font-size: 1.1em;
-            color: #666;
-        }
-
-        .product-card button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card button:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            background: linear-gradient(135deg, #34495e, #2c3e50);
-            color: #ecf0f1;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        .footer-links {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            margin: 0 10px;
-            color: #ecf0f1;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: #1abc9c;
-        }
-
-        .social-icons {
-            margin-top: 10px;
-        }
-
-        .social-icons a {
-            margin: 0 10px;
-            color: #ecf0f1;
-            text-decoration: none;
-            font-size: 1.5em;
-        }
-
-        .social-icons a:hover {
-            color: #1abc9c;
-        }
-
-        .cart {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            display: none;
-        }
-
-        .cart h2 {
-            margin: 0 0 20px;
-            font-size: 1.5em;
-            color: #2c3e50;
-        }
-
-        .cart ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .cart ul li {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .cart ul li span {
-            font-size: 1em;
-            color: #666;
-        }
-
-        .cart button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-
-        .cart button:hover {
-            transform: scale(1.05);
-        }
-
-        .order-form, .payment-page {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 300px;
-            z-index: 1000;
-        }
-
-        .order-form h2, .payment-page h2 {
-            margin: 0 0 20px;
-            font-size: 1.5em;
-            color: #2c3e50;
-        }
-
-        .order-form label, .payment-page label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1em;
-            color: #666;
-        }
-
-        .order-form input, .payment-page input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        .order-form button, .payment-page button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-
-        .order-form button:hover, .payment-page button:hover {
-            transform: scale(1.05);
-        }
-
-        .payment-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .payment-option input {
-            margin-right: 10px;
-        }
-
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background-color: #2ecc71;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        .login-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 300px;
-            z-index: 1000;
-        }
-
-        .login-modal h2 {
-            margin: 0 0 20px;
-            font-size: 1.5em;
-            color: #2c3e50;
-        }
-
-        .login-modal input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        .login-modal button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-
-        .login-modal button:hover {
-            transform: scale(1.05);
-        }
-
-        .newsletter {
-            text-align: center;
-            margin: 40px 20px;
-        }
-
-        .newsletter h2 {
-            font-size: 2em;
-            color: #2c3e50;
-        }
-
-        .newsletter input {
-            width: 100%;
-            max-width: 300px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        .newsletter button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-
-        .newsletter button:hover {
-            transform: scale(1.05);
-        }
-
-        .location-permission {
-            text-align: center;
-            margin: 40px 20px;
-        }
-
-        .location-permission p {
-            font-size: 1.2em;
-            color: #666;
-        }
-
-        .location-permission button {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-
-        .location-permission button:hover {
-            transform: scale(1.05);
-        }
-
-        .location-message {
-            text-align: center;
-            margin: 20px;
-            font-size: 1.2em;
-            color: #e74c3c;
-        }
-
-        .location-message.success {
-            color: #2ecc71;
-        }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .search-bar {
-                width: 100%;
-            }
-
-            .banner h1 {
-                font-size: 2em;
-            }
-
-            .banner p {
-                font-size: 1em;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            .banner {
-                padding: 60px 20px;
-            }
-
-            .banner h1 {
-                font-size: 1.8em;
-            }
-
-            .banner p {
-                font-size: 0.9em;
-            }
-
-            .product-card h3 {
-                font-size: 1.2em;
-            }
-
-            .product-card p {
-                font-size: 1em;
-            }
-
-            .cart {
-                width: 90%;
-                right: 5%;
-            }
-        }
+        /* Add your CSS styles here (same as provided in your original index.html) */
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -555,20 +24,20 @@
             <img src="logo.PNG" alt="Chillbrew Shakes Logo">
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#order">Order</a></li>
-                    <li><a href="#track">Track Order</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="track.html">Track Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
             <div class="search-bar">
                 <input type="text" placeholder="Search...">
                 <button>Search</button>
             </div>
-            <div class="cart-icon" onclick="toggleCart()">
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
                 <span>🛒</span>
                 <div class="badge" id="cart-badge">0</div>
             </div>
@@ -578,8 +47,8 @@
         <div class="banner" id="home">
             <h1>Refreshing Flavors, Anytime!</h1>
             <p>Discover our delicious range of milkshakes.</p>
-            <button onclick="window.location.href='#products'">Shop Now</button>
-            <button onclick="window.location.href='#about'">Learn More</button>
+            <button onclick="window.location.href='products.html'">Shop Now</button>
+            <button onclick="window.location.href='about.html'">Learn More</button>
         </div>
 
         <!-- Featured Products -->
@@ -592,43 +61,7 @@
                     <p>₹149</p>
                     <button onclick="addToCart('Classic Vanilla Milkshake', 149)">Add to Cart</button>
                 </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Kitkat Milkshake">
-                    <h3>Kitkat Milkshake</h3>
-                    <p>₹179</p>
-                    <button onclick="addToCart('Kitkat Milkshake', 179)">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Chocolate Milkshake">
-                    <h3>Chocolate Milkshake</h3>
-                    <p>₹149</p>
-                    <button onclick="addToCart('Chocolate Milkshake', 149)">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Oreo Milkshake">
-                    <h3>Oreo Milkshake</h3>
-                    <p>₹179</p>
-                    <button onclick="addToCart('Oreo Milkshake', 179)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Special Offers -->
-        <div class="special-offers">
-            <h2>Special Offers</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Strawberry Milkshake">
-                    <h3>Strawberry Milkshake</h3>
-                    <p>₹149</p>
-                    <button onclick="addToCart('Strawberry Milkshake', 149)">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Choco Chip Milkshake">
-                    <h3>Choco Chip Milkshake</h3>
-                    <p>₹179</p>
-                    <button onclick="addToCart('Choco Chip Milkshake', 179)">Add to Cart</button>
-                </div>
+                <!-- Add more product cards here -->
             </div>
         </div>
 
@@ -645,192 +78,42 @@
             </div>
             <p>Contact us: 701083740 | <a href="mailto:info@chillbrew.com">info@chillbrew.com</a></p>
         </footer>
-
-        <!-- Cart -->
-        <div class="cart" id="cart">
-            <h2>Cart</h2>
-            <ul id="cart-items"></ul>
-            <button onclick="showOrderForm()">Checkout</button>
-        </div>
-
-        <!-- Order Form -->
-        <div class="order-form" id="order-form">
-            <h2>Order Details</h2>
-            <form onsubmit="showPaymentPage(event)">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <label for="address">Address:</label>
-                <input type="text" id="address" required>
-                <button type="submit">Proceed to Payment</button>
-            </form>
-        </div>
-
-        <!-- Payment Page -->
-        <div class="payment-page" id="payment-page">
-            <h2>Payment Options</h2>
-            <div class="payment-option">
-                <input type="radio" id="cash-on-delivery" name="payment" value="Cash on Delivery" checked>
-                <label for="cash-on-delivery">Cash on Delivery</label>
-            </div>
-            <div class="payment-option">
-                <input type="radio" id="card" name="payment" value="Card">
-                <label for="card">Card</label>
-            </div>
-            <div class="payment-option">
-                <input type="radio" id="upi" name="payment" value="UPI">
-                <label for="upi">UPI</label>
-            </div>
-            <div class="payment-option">
-                <input type="radio" id="pay-later" name="payment" value="Pay Later">
-                <label for="pay-later">Pay Later</label>
-            </div>
-            <button onclick="confirmPayment()">Confirm Payment</button>
-        </div>
-
-        <!-- Notification -->
-        <div class="notification" id="notification">Item added to cart!</div>
-
-        <!-- Login Modal -->
-        <div class="login-modal" id="login-modal">
-            <h2>Login</h2>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button onclick="login()">Login</button>
-        </div>
-
-        <!-- Newsletter -->
-        <div class="newsletter">
-            <h2>Subscribe to Our Newsletter</h2>
-            <input type="email" placeholder="Enter your email">
-            <button>Subscribe</button>
-        </div>
     </div>
 
     <script>
-        // Coordinates of Vaishali Nagar, Jaipur
-        const vaishaliNagarCoords = { latitude: 26.9124, longitude: 75.7873 };
-        const deliveryRadius = 50; // 50 km radius
-
-        // Function to calculate distance using Haversine formula
-        function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-            const R = 6371; // Radius of the earth in km
-            const dLat = deg2rad(lat2 - lat1);
-            const dLon = deg2rad(lon2 - lon1);
-            const a =
-                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            const d = R * c; // Distance in km
-            return d;
-        }
-
-        function deg2rad(deg) {
-            return deg * (Math.PI / 180);
-        }
-
-        // Function to request location permission
-        function requestLocationPermission() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const userLat = position.coords.latitude;
-                        const userLon = position.coords.longitude;
-                        const distance = getDistanceFromLatLonInKm(
-                            vaishaliNagarCoords.latitude, vaishaliNagarCoords.longitude,
-                            userLat, userLon
-                        );
-                        if (distance <= deliveryRadius) {
-                            document.getElementById('location-permission').style.display = 'none';
-                            document.getElementById('location-message').innerText = 'You are within our delivery range!';
-                            document.getElementById('location-message').classList.add('success');
-                            document.getElementById('website-content').style.display = 'block';
-                        } else {
-                            document.getElementById('location-permission').style.display = 'none';
-                            document.getElementById('location-message').innerText = 'You are out of our delivery range. Orders are only available within a 50 km radius of Vaishali Nagar, Jaipur.';
-                        }
-                    },
-                    (error) => {
-                        console.error('Error getting location:', error);
-                        document.getElementById('location-message').innerText = 'Location access is required to check delivery availability. Please enable location services.';
-                    },
-                    { enableHighAccuracy: true } // Force high accuracy for better results
-                );
-            } else {
-                document.getElementById('location-message').innerText = 'Geolocation is not supported by your browser.';
-            }
-        }
-
         // Cart functionality
-        let cart = [];
-
         function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCart();
             showNotification();
         }
 
         function updateCart() {
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>`;
-                cartItems.appendChild(li);
-                total += item.price;
-            });
-            const totalLi = document.createElement('li');
-            totalLi.innerHTML = `<span><strong>Total</strong></span><span><strong>₹${total}</strong></span>`;
-            cartItems.appendChild(totalLi);
-
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             document.getElementById('cart-badge').innerText = cart.length;
         }
 
         function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.style.display = 'block';
+            const notification = document.createElement('div');
+            notification.innerText = 'Item added to cart!';
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = '#2ecc71';
+            notification.style.color = '#fff';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            document.body.appendChild(notification);
             setTimeout(() => {
-                notification.style.display = 'none';
+                document.body.removeChild(notification);
             }, 2000);
         }
 
-        function toggleCart() {
-            const cart = document.getElementById('cart');
-            cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function showOrderForm() {
-            if (cart.length === 0) {
-                alert('Your cart is empty. Please add items to proceed.');
-                return;
-            }
-            document.getElementById('order-form').style.display = 'block';
-        }
-
-        function showPaymentPage(event) {
-            event.preventDefault();
-            document.getElementById('order-form').style.display = 'none';
-            document.getElementById('payment-page').style.display = 'block';
-        }
-
-        function confirmPayment() {
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-            alert(`Thank you for your order! Your payment method is: ${paymentMethod}. Your order will be delivered shortly.`);
-            cart = [];
-            updateCart();
-            document.getElementById('payment-page').style.display = 'none';
-            document.getElementById('cart').style.display = 'none';
-        }
-
-        function login() {
-            alert('Login successful!');
-            document.getElementById('login-modal').style.display = 'none';
-        }
+        // Update cart badge on page load
+        updateCart();
     </script>
 </body>
 </html>
