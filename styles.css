@@ -264,9 +264,9 @@ footer {
 .banner {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 60px 20px;
+    padding: 40px 20px;
     background: linear-gradient(135deg, #1abc9c, #16a085);
     color: #fff;
     text-align: center;
@@ -274,39 +274,42 @@ footer {
 }
 
 .banner-content {
-    flex: 1;
-    max-width: 600px;
+    flex: 1 1 100%;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     animation: fadeInUp 1s ease;
 }
 
 .banner-content h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
+    font-size: 2.5em; /* Smaller font size for mobile */
+    margin-bottom: 15px;
     animation: slideInLeft 1s ease;
 }
 
 .banner-content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1.1em; /* Smaller font size for mobile */
+    margin-bottom: 25px;
     animation: slideInRight 1s ease;
 }
 
 .cta-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 10px; /* Smaller gap for mobile */
+    flex-wrap: wrap; /* Wrap buttons on small screens */
     animation: fadeIn 1.5s ease;
 }
 
 .cta-primary, .cta-secondary {
-    padding: 12px 24px;
+    padding: 10px 20px; /* Smaller padding for mobile */
     border: none;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 0.9em; /* Smaller font size for mobile */
     cursor: pointer;
     transition: transform 0.3s ease, background 0.3s ease;
+    flex: 1 1 45%; /* Allow buttons to take equal width */
+    max-width: 200px; /* Limit button width */
 }
 
 .cta-primary {
@@ -331,9 +334,9 @@ footer {
 }
 
 .banner-image {
-    flex: 1;
+    flex: 1 1 100%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto 0; /* Add margin for spacing on mobile */
     animation: fadeInRight 1s ease;
 }
 
@@ -341,6 +344,54 @@ footer {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .banner {
+        padding: 20px 10px; /* Smaller padding for mobile */
+    }
+
+    .banner-content h1 {
+        font-size: 2em; /* Smaller font size for smaller screens */
+    }
+
+    .banner-content p {
+        font-size: 1em; /* Smaller font size for smaller screens */
+    }
+
+    .cta-buttons {
+        gap: 8px; /* Smaller gap for smaller screens */
+    }
+
+    .cta-primary, .cta-secondary {
+        padding: 8px 16px; /* Smaller padding for smaller screens */
+        font-size: 0.8em; /* Smaller font size for smaller screens */
+    }
+
+    .banner-image {
+        margin-top: 15px; /* Adjust margin for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-content h1 {
+        font-size: 1.8em; /* Even smaller font size for very small screens */
+    }
+
+    .banner-content p {
+        font-size: 0.9em; /* Even smaller font size for very small screens */
+    }
+
+    .cta-buttons {
+        flex-direction: column; /* Stack buttons vertically on very small screens */
+        gap: 10px;
+    }
+
+    .cta-primary, .cta-secondary {
+        width: 100%; /* Full-width buttons on very small screens */
+        max-width: none;
+    }
 }
 
 /* Animations */
