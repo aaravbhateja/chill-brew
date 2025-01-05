@@ -282,13 +282,13 @@ footer {
 }
 
 .banner-content h1 {
-    font-size: 2.5em; /* Smaller font size for mobile */
+    font-size: 2.5em;
     margin-bottom: 15px;
     animation: slideInLeft 1s ease;
 }
 
 .banner-content p {
-    font-size: 1.1em; /* Smaller font size for mobile */
+    font-size: 1.1em;
     margin-bottom: 25px;
     animation: slideInRight 1s ease;
 }
@@ -296,20 +296,20 @@ footer {
 .cta-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Smaller gap for mobile */
-    flex-wrap: wrap; /* Wrap buttons on small screens */
+    gap: 10px;
+    flex-wrap: wrap;
     animation: fadeIn 1.5s ease;
 }
 
 .cta-primary, .cta-secondary {
-    padding: 10px 20px; /* Smaller padding for mobile */
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 0.9em; /* Smaller font size for mobile */
+    font-size: 0.9em;
     cursor: pointer;
     transition: transform 0.3s ease, background 0.3s ease;
-    flex: 1 1 45%; /* Allow buttons to take equal width */
-    max-width: 200px; /* Limit button width */
+    flex: 1 1 45%;
+    max-width: 200px;
 }
 
 .cta-primary {
@@ -336,12 +336,13 @@ footer {
 .banner-image {
     flex: 1 1 100%;
     max-width: 600px;
-    margin: 20px auto 0; /* Add margin for spacing on mobile */
+    margin: 20px auto 0;
     animation: fadeInRight 1s ease;
 }
 
 .banner-image img {
     width: 100%;
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -349,90 +350,47 @@ footer {
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
     .banner {
-        padding: 20px 10px; /* Smaller padding for mobile */
+        padding: 20px 10px;
     }
 
     .banner-content h1 {
-        font-size: 2em; /* Smaller font size for smaller screens */
+        font-size: 2em;
     }
 
     .banner-content p {
-        font-size: 1em; /* Smaller font size for smaller screens */
+        font-size: 1em;
     }
 
     .cta-buttons {
-        gap: 8px; /* Smaller gap for smaller screens */
+        gap: 8px;
     }
 
     .cta-primary, .cta-secondary {
-        padding: 8px 16px; /* Smaller padding for smaller screens */
-        font-size: 0.8em; /* Smaller font size for smaller screens */
+        padding: 8px 16px;
+        font-size: 0.8em;
     }
 
     .banner-image {
-        margin-top: 15px; /* Adjust margin for smaller screens */
+        margin-top: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .banner-content h1 {
-        font-size: 1.8em; /* Even smaller font size for very small screens */
+        font-size: 1.8em;
     }
 
     .banner-content p {
-        font-size: 0.9em; /* Even smaller font size for very small screens */
+        font-size: 0.9em;
     }
 
     .cta-buttons {
-        flex-direction: column; /* Stack buttons vertically on very small screens */
+        flex-direction: column;
         gap: 10px;
     }
 
     .cta-primary, .cta-secondary {
-        width: 100%; /* Full-width buttons on very small screens */
+        width: 100%;
         max-width: none;
-    }
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
     }
 }
