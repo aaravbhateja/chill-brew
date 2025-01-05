@@ -91,6 +91,7 @@ nav ul li a:hover {
 .cart-icon {
     position: relative;
     cursor: pointer;
+    font-size: 1.5em:
 }
 
 .cart-icon span {
