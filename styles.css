@@ -423,6 +423,6 @@ footer {
 
 .cart button img {
     display: block; /* Ensure the image takes up the full space of the button */
-    width: 100%; /* Adjust as needed */
-    height: 100%; /* Maintain aspect ratio */
+    width: auto; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
 }
