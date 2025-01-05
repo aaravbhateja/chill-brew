@@ -89,29 +89,20 @@ nav ul li a:hover {
 }
 
 .cart-icon {
-    position: relative;
-    cursor: pointer;
-    font-size: 1.5em:
-}
-
-.cart-icon span {
-    font-size: 1.5em;
-    color: #ecf0f1;
-}
-
-.cart-icon .badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: #e74c3c;
-    color: #fff;
-    border-radius: 50%;
-    padding: 4px;
-    font-size: 0.7em;
-    min-width: 18px;
-    text-align: center;
-}
-
+            position: relative;
+            font-size: 24px; /* Increase the size of the cart icon */
+            cursor: pointer;
+        }
+        .badge {
+            position: absolute;
+            top: -10px; /* Adjust the vertical position of the badge */
+            right: -10px; /* Adjust the horizontal position of the badge */
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 4px 8px;
+            font-size: 12px; /* Make the badge number smaller */
+        }
 /* Footer Styles */
 footer {
     background: #2c3e50;
